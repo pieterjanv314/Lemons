@@ -1,8 +1,8 @@
-Thank you for your interest in my PSF-based light curve extraction code with TESS data tailored for asteroseismic studies. 
+Thank you for your interest in my PSF-based light curve extraction code with TESS data tailored for asteroseismic studies, called LEMONS (Light curve Extraction by PSF MOddeliNg for variable Stars with TESS)
 
 Please find full documentation in docs/build/html/index.html
     
-There is a paper in preparation (expected to be submitted late 2025) that will illustrate the scientific relevance of this method as well as describe the technical details. 
+There is a paper in preparation (in review as of Jan 2026) that will illustrate the scientific relevance of this method as well as describe the technical details. 
 
 This code is still being tested. For any queries or feedback, please email p.van-daele2@newcastle.ac.uk
 
