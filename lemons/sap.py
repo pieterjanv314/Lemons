@@ -37,8 +37,8 @@ def get_raw_sap_lc(star_id,sector, mask_type='3x3',save_lc=True):
     -------
     times : 1D np.array 
         times of all cadences
-    background_corrected_flux : 1D np.array()
-        SAP flux in electrons/seconds
+    flux : 1D np.array()
+        background corrected SAP flux in electrons/seconds
     '''
     if os.path.isfile(f'data/{star_id}/sector_{sector}/'+f'sap_{mask_type}.npy'):
         background_corrected_flux = np.load(f'data/{star_id}/sector_{sector}/'+f'sap_{mask_type}.npy')
