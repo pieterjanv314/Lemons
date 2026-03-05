@@ -1,9 +1,11 @@
 Thank you for your interest in my PSF-based light curve extraction code with TESS data tailored for asteroseismic studies, called LEMONS (Light curve Extraction by
 Modelling pOint spread functioNs for variable Stars​)
 
+This tool is optimised for extracting light curves of variable stars in crowded regions (i.e. clusters).
+
 Please find full documentation in docs/build/html/index.html
     
-There is a paper in preparation (in review as of Jan 2026) that will illustrate the scientific relevance of this method as well as describe the technical details. 
+There is a paper in preparation (in review as of Jan 2026) that will illustrate the scientific relevance of this method as well as describe its technical details. 
 
 This code is still being tested. For any queries or feedback, please email p.van-daele2@newcastle.ac.uk
 
