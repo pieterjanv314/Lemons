@@ -97,6 +97,12 @@ def get_psf_fit_results(fit_input:dict,overwrite:bool=False):
         # Save the dictionary to a binary file
         with open(filename, 'wb') as f:
             pickle.dump(psf_fit_results, f)
+        
+        filename_psflc = f'data/{star_id}/sector_{sector}/'+f'psf.npy'
+        n_cad = len(psf_fit_results['fit_results'])
+        psf_flux = [psf_fit_results['fit_results'][i]['flux_fit'][0] for i in range(n_cad)]
+        np.save(filename_psflc,psf_flux)
+        
         return psf_fit_results
 
 def extract_weightedpsf_flux(image, psf_result:dict, n:int = 2,object_index:int = 0): #weighted mask
@@ -155,7 +161,7 @@ def get_weightedpixelintegred_lightcurve(psf_fit_results:dict,subpixelfineness:i
     Returns
     -------
     wpi_fluxes : Python list
-        weighted pixel integrated fluxes, 
+        weighted pixel integrated fluxes
     '''
     star_id,sector = psf_fit_results['fit_input']['star_id'],psf_fit_results['fit_input']['sector']
     filename = f'data/{star_id}/sector_{sector}/{star_id}_s{sector}_wpif.npy'
@@ -199,10 +205,32 @@ def get_weightedpixelintegred_lightcurve(psf_fit_results:dict,subpixelfineness:i
             np.save(filename,wpi_fluxes)
         return wpi_fluxes
 
-def get_psf_lc(star_id,sector):
+def get_psf_lc(star_id: str,sector: int,overwrite = False):
     '''
-    TO BE WRITTEN, just creates a file that just contains the psf lc of the target. It will read much quicker then the full psf_fit_result
-    an error is raised if the psf fit hasn't been done yet. 
+        A usually quicker way to retrieve the PSF fluxes from the psf_fit_results. This is stored in a file and read again later.
+    
+
+        Parameters
+        ----------
+        star_id : string
+            star identifier
+        sector: int, optional
+            TESS sector
+        overwrite : boolean, optional
+            if True, it will calculate again and overwrite previous results stored for this star and sector
+            if False, and a result has already been stored, it will read and return the previous result, regardless of different psf_fit_results.
+        visual_check_before_saving : boolean, optional
+            if True, it present a quick plot of the lightcurves and asks if you want to store the result. Manual input is needed to continue.
+            If False, the light curve will be stored automatically as 
+
+        Raises
+        ------
+        FileNotFoundError : If psf_fit_results aren't stored in the expected location.
+
+        Returns
+        -------
+        psf_flux : Python list
+            light curve of PSF fluxes (i.e. the integrated volume under the fitted Gaussian PSF)
     '''
     filename_psflc = f'data/{star_id}/sector_{sector}/'+f'psf.npy'
     filename_psfresults = f'data/{star_id}/sector_{sector}/psf_fit_results.pkl'
