@@ -8,12 +8,16 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - given-names: Pieterjan Joris K
+  - given-names: Pieterjan
     family-names: Van Daele
     email: p.van-daele2@newcastle.ac.uk
     affiliation: Newcastle University
+    orcid: 'https://orcid.org/0009-0005-1169-0400'
 repository-code: 'https://github.com/pieterjan314/Lemons'
 abstract: >-
-	A PSF-based light curve extraction code with TESS data, optimised for extracting light curves of variable stars in crowded regions (i.e. clusters).
+  A PSF-based light curve extraction code with TESS data,
+  optimised for extracting light curves of variable stars in
+  crowded regions (i.e. clusters).
 license: GPL-3.0
-date-released: 2026-03-19
+date-released: '2026-03-19'
+
