@@ -90,7 +90,7 @@ def get_psf_fit_results(fit_input:dict,overwrite:bool=False):
             image = image_with_background-bk_fluxes[i_cad] #2d - integer
             all_cadance_results.append(psf_fit.fit_one_image(image,init_params,fit_input))
             #
-
+        print()
         psf_fit_results = {}
         psf_fit_results['fit_input'] = fit_input
         psf_fit_results['fit_results'] = all_cadance_results
@@ -189,7 +189,7 @@ def get_weightedpixelintegred_lightcurve(psf_fit_results:dict,subpixelfineness:i
             image = psf_fit.give_central_cutout_image(image,new_length=5)
 
             wpi_fluxes.append(extract_weightedpsf_flux(image,psf_fit_results['fit_results'][i_cad],n=subpixelfineness))
-
+        print()
         if visual_check_before_saving:
             fig,ax = plt.subplots(1,1)
             ax.plot(bk_times,wpi_fluxes)
