@@ -1,6 +1,6 @@
 Thank you for your interest in LEMONS, a PSF-based light curve extraction code with TESS data tailored for asteroseismic studies, developed by Pieterjan Van Daele.
 
-This tool is optimised for extracting light curves of variable stars in crowded regions (i.e. clusters).
+LEMONS stand for *<u>L</u>ight curve <u>E</u>xtraction by <u>M</u>odelling p<u>O</u>int spread functio<u>N</u>s for variable <u>S</u>tars*. This tool is optimised for extracting light curves of variable stars in crowded regions (i.e. clusters).
 
 Please find full documentation in docs/build/html/index.html
     
