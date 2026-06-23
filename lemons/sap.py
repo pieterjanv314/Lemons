@@ -218,7 +218,7 @@ def periodogram(time,flux):
     #calculate periodogram of light curve
     Nyquist_freq = 0.5*1/(lc.time[1]-lc.time[0])
     start = 3/(time[-1]-time[0])
-    pg = lc.to_periodogram(minimum_frequency=start*1/u.day, maximum_frequency=Nyquist_freq, oversample_factor=20)
+    pg = lc.to_periodogram(minimum_frequency=start*1/u.day, maximum_frequency=Nyquist_freq, method='lombscargle',oversample_factor=20)
     freq = pg.frequency.value[:-1]
     ampl = pg.power.value[:-1] #I know it says power, but I checked and this returns the amplitude
 

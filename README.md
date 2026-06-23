@@ -4,7 +4,7 @@ LEMONS stand for *<u>L</u>ight curve <u>E</u>xtraction by <u>M</u>odelling p<u>O
 
 Please find full documentation in docs/build/html/index.html
     
-There is a paper in preparation (in review as of Jan 2026) that will illustrate the scientific relevance of this method as well as describe its technical details. 
+There is a paper in preparation (accepted as of Jun 2026) that will illustrate the scientific relevance of this method as well as describe its technical details. 
 
 This code is still being tested. For any queries or feedback, please email [p.van-daele2@newcastle.ac.uk](mailto:p.van-daele2@newcastle.ac.uk)
 
