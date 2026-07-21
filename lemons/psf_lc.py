@@ -139,7 +139,7 @@ def extract_weightedpsf_flux(image, psf_result:dict, n:int = 2,object_index:int 
                 total_flux += (weight*image[i][j])
     return total_flux
 
-def get_weightedpixelintegred_lightcurve(psf_fit_results:dict,subpixelfineness:int=2,overwrite:bool=False,visual_check_before_saving:bool=False):
+def get_weightedpixelintegred_lightcurve(psf_fit_results:dict,subpixelfineness:int=2,overwrite:bool=False,visual_check_before_saving:bool=False,object_index:int=0):
     '''
     An extra layer of processing...
     Returns a light curve where the fluxes are calculated as a weighted sum over the pixels where the weights are according value of the PSF gaussian. 
@@ -156,7 +156,9 @@ def get_weightedpixelintegred_lightcurve(psf_fit_results:dict,subpixelfineness:i
         if False, and a result has already been stored, it will read and return the previous result, regardless of different psf_fit_results.
     visual_check_before_saving : boolean, optional
         if True, it present a quick plot of the lightcurves and asks if you want to store the result. Manual input is needed to continue.
-        If False, the light curve will be stored automatically as 
+        If False, the light curve will be stored automatically as a .npy file
+    object_index : int, optional
+        allows you to get a wpi lightcurve of a contaminator with index>1. default = 0 (i.e. the target star)
 
     Returns
     -------
@@ -164,7 +166,11 @@ def get_weightedpixelintegred_lightcurve(psf_fit_results:dict,subpixelfineness:i
         weighted pixel integrated fluxes
     '''
     star_id,sector = psf_fit_results['fit_input']['star_id'],psf_fit_results['fit_input']['sector']
-    filename = f'data/{star_id}/sector_{sector}/{star_id}_s{sector}_wpif.npy'
+    if object_index ==0:
+        filename = f'data/{star_id}/sector_{sector}/{star_id}_s{sector}_wpif.npy'
+    else:
+        filename = f'data/{star_id}/sector_{sector}/{star_id}_s{sector}_CONTAMINATOR{object_index}_wpif.npy'
+
     if (overwrite == False) and os.path.isfile(filename):
         return np.load(filename)
     else:
@@ -188,7 +194,7 @@ def get_weightedpixelintegred_lightcurve(psf_fit_results:dict,subpixelfineness:i
             image = image_with_background-bk_fluxes[i_cad] #2d - integer
             image = psf_fit.give_central_cutout_image(image,new_length=5)
 
-            wpi_fluxes.append(extract_weightedpsf_flux(image,psf_fit_results['fit_results'][i_cad],n=subpixelfineness))
+            wpi_fluxes.append(extract_weightedpsf_flux(image,psf_fit_results['fit_results'][i_cad],n=subpixelfineness,object_index=object_index))
         print()
         if visual_check_before_saving:
             fig,ax = plt.subplots(1,1)

@@ -189,12 +189,12 @@ def get_pos(star_id,tpf, search_radius_pixels=5,max_tmag = 15,get_magnitudes = F
     
     Returns
     -------
-    pos: python ictionary
+    pos: python dictionary
         dictionary of positions of stars over the tpf image (in pixel units)
         pos['x_0'], a list x-positions, first element corresponds to the target star.
         pos['y_0'], a list x-positions, first element corresponds to the target star.
     sel_tmags: python list
-        list of TESS magnitudes of stars, in the same order as 
+        list of TESS magnitudes of stars, in the same order as pos
         returned if get_magnitudes == True
     '''
 
